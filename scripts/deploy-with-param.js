@@ -8,7 +8,7 @@ async function deployElectionContract(_privateKey) {
     console.log('Account balance:', (await wallet.getBalance()).toString()); // We are printing the account balance
 
     const USElection = await ethers.getContractFactory("USElection", wallet); // Get the contract factory with the signer from the wallet created
-    const usElectionContract = await USElection.deploy();
+    const usElectionContract = await USElecton.deploy();
     console.log('Waiting for USElection deployment...');
     await usElectionContract.deployed();
 

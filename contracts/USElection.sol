@@ -18,13 +18,18 @@ contract USElection {
         uint8 stateSeats;
     }
 
-    event LogStateResult(uint8 winner, uint8 stateSeats, string state);
+    event LogStateResult(uint8 indexed winner, uint8 stateSeats, string state);
     event LogElectionEnded(uint winner);
 
 		modifier onlyActiveElection() {
         require(!electionEnded, "The election has ended already");
         _;
     }
+
+    enum President {
+	BIDEN = 1,
+	TRUMP = 2
+}
 
 	function submitStateResult(StateResult calldata result) public onlyActiveElection {
         require(result.stateSeats > 0, "States must have at least 1 seat");
